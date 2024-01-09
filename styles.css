@@ -1,0 +1,240 @@
+/*general stíling from joshwcomeau.com*/
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+html {
+  font-size: 62.5%;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*  CUSTOM PROPERTIES*/
+:root {
+  --color-result1: hsl(0, 100%, 67%);
+  --color-result2: hsl(39, 100%, 56%);
+  --color-result3: hsl(166, 100%, 37%);
+  --color-result4: hsl(234, 85%, 45%);
+
+  --color-gradient1: hsl(252, 100%, 67%);
+  --color-gradient2: hsl(241, 81%, 54%);
+  --color-gradient3: hsla(256, 72%, 46%, 1);
+  --color-gradient4: hsla(241, 72%, 46%, 0);
+
+  --color-text-main: hsl(0, 0%, 100%);
+  --color-background: hsl(221, 100%, 96%);
+  --color-text-secondary: hsl(241, 100%, 89%);
+  --color-button: hsl(224, 30%, 27%);
+
+  --font-main: "Hanken Grotesk", sans-serif;
+}
+
+/*general rules*/
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  font-size: 1.8rem;
+  font-family: var(--font-main);
+  background-color: var(--color-background);
+}
+
+.card {
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 3rem;
+  line-height: 3rem;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0.5rem 1rem 5em var(--color-text-secondary);
+  overflow: hidden;
+}
+
+@media (max-width: 425px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .card__result {
+    border-radius: 0 0 30px 30px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  gap: 2rem;
+  padding: 3rem;
+}
+
+.header {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/*  RESULT SECTION*/
+.card__result {
+  background: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+  border-radius: 30px;
+  height: 100%;
+  text-align: center;
+}
+
+.result--circle {
+  /*width: 200px;
+  height: 200px;
+  background: linear-gradient(hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+  border: none;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 3.5rem;*/
+  display: grid;
+  place-content: center;
+  width: 17rem;
+  margin-inline: auto;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: linear-gradient(hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+}
+.score {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.card__result--header {
+  color: var(--color-text-secondary);
+}
+
+.number--main {
+  display: block;
+  color: var(--color-text-main);
+  font-size: 55px;
+}
+.text1 {
+  color: var(--color-text-main);
+  font-size: 3rem;
+  font-weight: 800;
+}
+.text2,
+.number--small {
+  color: var(--color-text-secondary);
+  line-height: 1.1;
+}
+/*    SUMMARY SECTION*/
+.flex-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.card__summary {
+  text-align: left;
+}
+.card__summary--header {
+  color: var(--color-button);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.sum--reaction {
+  background-color: #fdf6f5;
+}
+.reaction {
+  color: var(--color-result1);
+}
+.sum--memory {
+  background-color: #fffbf2;
+}
+.memory {
+  color: var(--color-result2);
+}
+.sum--verbal {
+  background-color: #f2fafa;
+}
+.verbal {
+  color: var(--color-result3);
+}
+.sum--visual {
+  background-color: #f2f3fd;
+}
+.visual {
+  color: var(--color-result4);
+}
+
+/*buttons*/
+.button {
+  color: var(--color-text-main);
+  background-color: var(--color-button);
+  border: none;
+  border-radius: 100vw;
+  padding: 1.5rem 1.5rem;
+}
+.button:is(:active, :hover) {
+  background: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+  cursor: pointer;
+}
